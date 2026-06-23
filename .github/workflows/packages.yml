@@ -3,6 +3,7 @@ name: Build Packages
 on:
   push:
 
+
 jobs:
   linux:
     runs-on: ubuntu-latest
@@ -28,15 +29,15 @@ jobs:
       run: |
         npm ci
         npm run gulp vscode-linux-x64
-        mkdir code-linux-x64
-        cp -r ../VSCode-linux-x64 ./code-linux-x64/
-        mv ./code-linux-x64/VSCode-linux-x64 ./code-linux-x64/code-linux-x64
+        mkdir code-x17-linux-x64
+        cp -r ../VSCode-linux-x64 ./code-x17-linux-x64/
+        mv ./code-x17-linux-x64/VSCode-linux-x64 ./code-x17-linux-x64/code-x17-linux-x64
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
-        name: code-linux-x64
-        path: code-linux-x64
+        name: code-x17-linux-x64
+        path: code-x17-linux-x64
 
   windows:
     runs-on: windows-2022
@@ -57,12 +58,12 @@ jobs:
       run: |
         npm ci
         npm run gulp vscode-win32-x64
-        mkdir code-win32-x64
-        mkdir code-win32-x64\code-win32-x64
-        xcopy ..\VSCode-win32-x64 .\code-win32-x64\code-win32-x64 /E /I
+        mkdir code-x17-win32-x64
+        mkdir code-x17-win32-x64\code-x17-win32-x64
+        xcopy ..\VSCode-win32-x64 .\code-x17-win32-x64\code-x17-win32-x64 /E /I
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
-        name: code-win32-x64
-        path: code-win32-x64
+        name: code-x17-win32-x64
+        path: code-x17-win32-x64
